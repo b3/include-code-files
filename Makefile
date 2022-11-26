@@ -53,6 +53,10 @@ test: $(FILTER_FILE) test/input.md test/test.yaml
 test/expected.native: $(FILTER_FILE) test/input.md test/test.yaml
 	$(PANDOC) --defaults test/test.yaml --output=$@
 
+## Generate an example from test/input.md
+test/output.html: $(FILTER_FILE) test/input.md
+	$(PANDOC) -s --lua-filter=$< test/input.md --output=$@
+
 ## Creates or updates the quarto extension
 .PHONY: quarto-extension
 quarto-extension: $(QUARTO_EXT_DIR)/_extension.yml \
