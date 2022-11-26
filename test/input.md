@@ -21,9 +21,9 @@ title: Including Hello World
 `detent` removes specified number of whitespaces (and only
 whitespaces) from beginning of each line
 
-``` {include="include-code-files.lua" .lua startLine=8 endLine=8 dedent=4 .bash .numberLines}
+``` {include="include-code-files.lua" .lua startLine=42 endLine=42 dedent=4 .bash .numberLines}
 ```
 
-``` {include="include-code-files.lua" .lua startLine=61 endLine=61 dedent=5 .numberLines}
+``` {include="include-code-files.lua" .lua startLine=42 endLine=42 dedent=10 .numberLines}
 ```
 

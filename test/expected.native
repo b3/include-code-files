@@ -48,13 +48,13 @@
 , CodeBlock
     ( ""
     , [ "lua" , "bash" , "numberLines" ]
-    , [ ( "startFrom" , "8" ) ]
+    , [ ( "startFrom" , "42" ) ]
     )
-    "return line:sub(1,n):gsub(\" \",\"\") .. line:sub(n+1)\n"
+    "      if not cb.attributes.endLine or number <= tonumber(cb.attributes.endLine) then\n"
 , CodeBlock
     ( ""
     , [ "lua" , "numberLines" ]
-    , [ ( "startFrom" , "61" ) ]
+    , [ ( "startFrom" , "42" ) ]
     )
-    "{CodeBlock = transclude }\n"
+    "if not cb.attributes.endLine or number <= tonumber(cb.attributes.endLine) then\n"
 ]
