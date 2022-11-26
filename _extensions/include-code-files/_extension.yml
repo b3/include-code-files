@@ -1,6 +1,6 @@
 name: include-code-files
 author: Bruno BEAUFILS
-version: 0.0.0
+version: 1.0.0
 contributes:
   filters:
     - include-code-files.lua
