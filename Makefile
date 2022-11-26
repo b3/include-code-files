@@ -70,7 +70,7 @@ $(QUARTO_EXT_DIR)/_extension.yml: _extensions/$(FILTER_NAME)
 	@printf 'version: %s\n'  "$(VERSION)" >> $@
 	@printf 'contributes:\n  filters:\n    - %s\n' $(FILTER_FILE) >> $@
 
-## Sets a new release
+## Sets a new release using VERSION
 .PHONY: release
 release: quarto-extension
 	git commit -am "Release $(FILTER_NAME) $(VERSION)"
