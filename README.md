@@ -1,13 +1,24 @@
 Include code from source files in pandoc
 ========================================
 
-Filter to include code from source files.
+Pandoc filter to include code from source files as code blocks.
 
 The filter is largely inspired by
 [pandoc-include-code](https://github.com/owickstrom/pandoc-include-code)
 written by [Oskar WICKSTRÖM](https://github.com/owickstrom).
 
-## Usage
+## Installing
+
+The filter can be used without special installation, just by passing
+the `include-code-files.lua` file path to pandoc via
+`--lua-filter`/`-L`.
+
+User-global installation is possible by placing the filter within the
+filters directory of pandoc's user data directory. This allows to use
+the filter just by using the filename, without having to specify the
+full file path.
+
+## Using
 
 The filter recognizes code blocks with the `include` attribute present. It
 swaps the content of the code block with contents from a file.
@@ -53,7 +64,8 @@ location in the source file.
 
 ## Example
 
-An HTML can be produced with this command:
+An HTML version of [input.md](test/input.md) can be produced as
+[output.html](test/output.html) with this command:
 
-    pandoc --lua-filter=include-code-files.lua sample.md --output result.html
+    pandoc -s --lua-filter=include-code-files.lua test/input.md --output test/output.html
 
