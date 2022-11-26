@@ -7,6 +7,11 @@ The filter is largely inspired by
 [pandoc-include-code](https://github.com/owickstrom/pandoc-include-code)
 written by [Oskar WICKSTRÖM](https://github.com/owickstrom).
 
+This repository exists thanks to the work of [Albert
+KREWINKEL](https://github.com/tarleb/) among other things in
+[pandoc/lua-filters](https://github.com/pandoc/lua-filters/issues/207).
+
+
 ## Installing
 
 The filter can be used without special installation, just by passing
