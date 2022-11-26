@@ -1,8 +1,29 @@
 ---
-title: Lorem ipsum
-author: Nullus
+author: me
+title: Including Hello World
 ---
 
-Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec
-hendrerit tempor tellus. Donec pretium posuere tellus. Proin quam
-nisl, tincidunt et, mattis eget, convallis nec, purus.
+# Inclusion
+
+``` {include="include-code-files.lua" .lua .numberLines}
+```
+
+# Ranges
+
+``` {include="include-code-files.lua" .lua startLine=7 endLine=9 .numberLines}
+```
+
+``` {include="include-code-files.lua" .lua start-line=7 end-line=9 .numberLines}
+```
+
+# Detent
+
+`detent` removes specified number of whitespaces (and only
+whitespaces) from beginning of each line
+
+``` {include="include-code-files.lua" .lua startLine=8 endLine=8 dedent=4 .bash .numberLines}
+```
+
+``` {include="include-code-files.lua" .lua startLine=61 endLine=61 dedent=5 .numberLines}
+```
+

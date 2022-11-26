@@ -1,5 +1,5 @@
 input-files: ["test/input.md"]
 to: native
-standalone: true
+standalone: false
 filters:
-  - {type: lua, path: greetings.lua}
+  - {type: lua, path: include-code-files.lua}
