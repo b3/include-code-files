@@ -8,7 +8,7 @@ DIFF = diff
 SED := sed $(shell sed v </dev/null >/dev/null 2>&1 && echo " --posix") -E
 
 # Name of the filter file, *with* `.lua` file extension
-FILTER_FILE := $(wildcard *.lua)
+FILTER_FILE := include-code-files.lua
 
 # Name of the filter, *without* `.lua` file extension
 FILTER_NAME = $(patsubst %.lua,%,$(FILTER_FILE))
@@ -16,20 +16,9 @@ FILTER_NAME = $(patsubst %.lua,%,$(FILTER_FILE))
 # Directory containing the Quarto extension
 QUARTO_EXT_DIR = _extensions/$(FILTER_NAME)
 
-# The extension's name. Used in the Quarto extension metadata
-EXT_NAME = $(FILTER_NAME)
-
 # Current version (the latest tag). Used for quarto extension
 VERSION = $(shell git tag --sort=-version:refname --merged | head -n1 | \
-						 sed -e 's/^v//' | tr -d "\n")
-ifeq "$(VERSION)" ""
-VERSION = 0.0.0
-endif
-
-# GitHub repository; used to setup the filter
-REPO_PATH = $(shell git remote get-url origin | sed -e 's%.*github\.com[/:]%%')
-REPO_NAME = $(shell git remote get-url origin | sed -e 's%.*/%%')
-USER_NAME = $(shell git config user.name)
+					sed -e 's/^v//' | tr -d "\n")
 
 ## Show available targets
 # Comments preceding "simple" targets (those which do not user macro
@@ -65,14 +54,11 @@ quarto-extension: $(QUARTO_EXT_DIR)/_extension.yml \
 $(QUARTO_EXT_DIR):
 	mkdir -p $@
 
-## This may change, so re-create the file every time
+# This may change, so re-create the file every time
 .PHONY: $(QUARTO_EXT_DIR)/_extension.yml
 $(QUARTO_EXT_DIR)/_extension.yml: _extensions/$(FILTER_NAME)
-	@printf 'Creating %s\n' $@
-	@printf 'name: %s\n' "$(EXT_NAME)" > $@
-	@printf 'author: %s\n' "$(USER_NAME)" >> $@
-	@printf 'version: %s\n'  "$(VERSION)" >> $@
-	@printf 'contributes:\n  filters:\n    - %s\n' $(FILTER_FILE) >> $@
+	@printf 'Updating %s\n' $@
+	@sed -i -e 's/^version:.*$$/version: $(VERSION)/' $@
 
 ## Sets a new release using VERSION
 .PHONY: release
@@ -83,4 +69,4 @@ release: quarto-extension
 ## Clean unnecessary files
 .PHONY: clean
 clean:
-	rm -f *~
+	-rm -f *~
