@@ -1,0 +1,15 @@
+---
+title: "Example for include-code-files filter"
+filters:
+  - include-code-files
+---
+
+With the include-code-files filter, you can include code snippets directly from a file using the `include` attribute.
+
+```{.python include="_snippets/hello_world.py"}
+```
+
+You can combine this with other quarto attributes like `filename` or `code-line-numbers`:
+
+```{.python include="_snippets/hello_world.py" filename="hello_world.py" code-line-numbers="true"}
+```
