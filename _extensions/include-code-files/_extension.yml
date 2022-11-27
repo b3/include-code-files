@@ -1,6 +1,7 @@
 name: include-code-files
-author: Bruno BEAUFILS
+author: Sam Edwardes
 version: 1.0.0
+quarto-required: ">=1.2.0"
 contributes:
   filters:
     - include-code-files.lua
