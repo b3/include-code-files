@@ -42,16 +42,16 @@ help:
 
 ## Test that running the filter on the sample input yields expected output
 .PHONY: test
-test: $(FILTER_FILE) test/input.md test/test.yaml
-	$(PANDOC) --defaults test/test.yaml | \
+test: $(FILTER_FILE) test/input.md test/test.yml
+	$(PANDOC) --defaults test/test.yml | \
 		$(DIFF) test/expected.native -
 
 ## Re-generate the expected test output
 # This file **must not** be a dependency of the `test` target, as that
 # would cause it to be regenerated on each run, making the test
 # pointless.
-test/expected.native: $(FILTER_FILE) test/input.md test/test.yaml
-	$(PANDOC) --defaults test/test.yaml --output=$@
+test/expected.native: $(FILTER_FILE) test/input.md test/test.yml
+	$(PANDOC) --defaults test/test.yml --output=$@
 
 ## Generate an example from test/input.md
 test/output.html: $(FILTER_FILE) test/input.md
