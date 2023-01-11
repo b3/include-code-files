@@ -11,6 +11,57 @@ This repository exists thanks to the work of [Albert
 KREWINKEL](https://github.com/tarleb/) among other things in
 [pandoc/lua-filters](https://github.com/pandoc/lua-filters/issues/207).
 
+## Quick Start
+
+The `include-code-files` filter supports pandoc and quarto.
+
+### Pandoc
+
+Install the extension by cloning this repository:
+
+```bash
+git clone https://github.com/b3/include-code-files.git
+```
+
+You can then use the extension in any pandoc file:
+
+``````markdown
+```{include="hello.c"}
+```
+``````
+
+When rendering include the path to `include-code-files.lua`
+
+```bash
+pandoc -s --lua-filter=include-code-files.lua test/input.md --output test/output.html
+```
+
+For complete details see the [Lua filter for pandoc](#lua-filter-for-pandoc) section below.
+
+### Quarto
+
+Install the extension:
+
+```bash
+quarto add b3/include-code-files@quarto
+```
+
+Use the extension in any `.qmd` file by including the filter in the YAML front matter.
+
+``````markdown
+---
+filters:
+  - include-code-files
+---
+
+```{.python include="_snippets/hello_world.py"}
+```
+``````
+
+For complete details see the [Extension for Quarto](#extension-for-quarto) section below.
+
+
+
 ## Lua filter for pandoc
 
 ### Installing
@@ -78,13 +129,13 @@ An HTML version of [input.md](test/input.md) can be produced as
 
 ## Extension for Quarto
 
-![Screenshot of an example output using include-code-files](docs/example-screenshot.png)
+![Screenshot of an example output using include-code-files](examples/quarto/screenshot.png)
 
 
 ### Installing
 
 ```bash
-quarto add SamEdwardes/include-code-files
+quarto add b3/include-code-files
 ```
 
 This will install the extension under the `_extensions`
@@ -131,6 +182,6 @@ You can combine this with other quarto attributes like `filename` or `code-line-
 ### Example
 
 Here is the source code for a minimal example:
-[example.qmd](docs/example.qmd). See a rendered sample here:
+[examples/quarto/index.qmd](examples/quarto/index.qmd). See a rendered sample here:
 <https://samedwardes.quarto.pub/example-for-include-code-files-filter/>.
 
