@@ -1,4 +1,4 @@
-- source: example.qmd
+- source: index.qmd
   quarto-pub:
     - id: 509ab2f5-de97-45f6-b5e8-bb1304c1797d
       url: 'https://quartopub.com/sites/samedwardes/example-for-include-code-files-filter'
