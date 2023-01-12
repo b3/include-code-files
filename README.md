@@ -18,8 +18,8 @@ The `include-code-files` filter supports pandoc and quarto.
 ### Pandoc
 
 Install the extension whether by simply downloading the
-[include-code-files.lua](include-code-files.lua) file somewhere on
-your computer or by cloning this repository:
+[include-code-files.lua](_extensions/include-code-files/include-code-files.lua)
+file somewhere on your computer or by cloning this repository:
 
 ```bash
 git clone https://github.com/b3/include-code-files.git
