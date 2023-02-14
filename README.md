@@ -11,7 +11,7 @@ This repository exists thanks to the work of [Albert
 KREWINKEL](https://github.com/tarleb/) among other things in
 [pandoc/lua-filters](https://github.com/pandoc/lua-filters/issues/207).
 
-If you are a Quarto user please use the offical extension from the Quarto team:
+If you are a Quarto user, please use the official extension from the Quarto team:
 <https://github.com/quarto-ext/include-code-files>.
 
 ## Quick Start
