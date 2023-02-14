@@ -13,16 +13,13 @@ FILTER_FILE := include-code-files.lua
 # Name of the filter, *without* `.lua` file extension
 FILTER_NAME = $(patsubst %.lua,%,$(FILTER_FILE))
 
-# Directory containing the Quarto extension
-QUARTO_EXT_DIR = _extensions/$(FILTER_NAME)
-
-# Current version (the latest tag). Used for quarto extension
+# Current version (the latest tag).
 VERSION = $(shell git tag --sort=-version:refname --merged | head -n1 | \
 					sed -e 's/^v//' | tr -d "\n")
 
 ## Show available targets
-# Comments preceding "simple" targets (those which do not user macro
-# name) and introduced by two dashes are used as their describtion.
+# Comments preceding "simple" targets (those which do not use macro
+# name) and introduced by two dashes are used as their description.
 .PHONY: help
 help:
 	@tabs 22 ; $(SED) -ne \
@@ -46,23 +43,9 @@ test/expected.native: $(FILTER_FILE) test/input.md test/test.yml
 test/output.html: $(FILTER_FILE) test/input.md
 	$(PANDOC) -s --lua-filter=$< test/input.md --output=$@
 
-## Creates or updates the quarto extension
-.PHONY: quarto-extension
-quarto-extension: $(QUARTO_EXT_DIR)/_extension.yml \
-		$(QUARTO_EXT_DIR)/$(FILTER_FILE)
-
-$(QUARTO_EXT_DIR):
-	mkdir -p $@
-
-# This may change, so re-create the file every time
-.PHONY: $(QUARTO_EXT_DIR)/_extension.yml
-$(QUARTO_EXT_DIR)/_extension.yml: _extensions/$(FILTER_NAME)
-	@printf 'Updating %s\n' $@
-	@sed -i -e 's/^version:.*$$/version: $(VERSION)/' $@
-
 ## Sets a new release using VERSION
 .PHONY: release
-release: quarto-extension
+release:
 	git commit -am "Release $(FILTER_NAME) $(VERSION)"
 	git tag v$(VERSION) -m "$(FILTER_NAME) $(VERSION)"
 
