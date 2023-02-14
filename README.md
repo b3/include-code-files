@@ -17,8 +17,8 @@ If you are a Quarto user, please use the official extension from the Quarto team
 ## Quick Start
 
 Install the extension whether by simply downloading the
-[include-code-files.lua](_extensions/include-code-files/include-code-files.lua)
-file somewhere on your computer or by cloning this repository:
+[include-code-files.lua](include-code-files.lua) file somewhere on
+your computer or by cloning this repository:
 
 ```bash
 git clone https://github.com/b3/include-code-files.git
@@ -37,7 +37,7 @@ When rendering include the path to `include-code-files.lua`
 pandoc -s --lua-filter=include-code-files.lua test/input.md --output test/output.html
 ```
 
-For complete details see the [Lua filter for pandoc](#lua-filter-for-pandoc) section below.
+For complete details see following sections below.
 
 ## Installing
 
